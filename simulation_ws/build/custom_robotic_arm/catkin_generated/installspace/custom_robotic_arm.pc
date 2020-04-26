@@ -1,0 +1,8 @@
+prefix=/home/mady/MEGA/mady/courses/learn_ros_python/simulation_ws/install
+
+Name: custom_robotic_arm
+Description: Description of custom_robotic_arm
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
