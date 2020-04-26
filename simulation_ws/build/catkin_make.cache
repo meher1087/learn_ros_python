@@ -1,2 +1,0 @@
-custom_robotic_arm
--DCATKIN_DEVEL_PREFIX=/home/mady/MEGA/mady/courses/learn_ros_python/simulation_ws/devel -DCMAKE_INSTALL_PREFIX=/home/mady/MEGA/mady/courses/learn_ros_python/simulation_ws/install -G Unix Makefiles
