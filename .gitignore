@@ -1,0 +1,9 @@
+/Notes/c_ros.pdf
+/Notes/ROS_python.pdf
+/ros_ws/build/
+/ros_ws/devel/
+/ros_ws/.catkin_workspace
+/ros_ws/src/basic/src/.vscode
+/simulation_ws/build
+/simulation_ws/devel
+/simulation_ws/.catkin_workspace
