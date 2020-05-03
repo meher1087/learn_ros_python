@@ -1,0 +1,272 @@
+<?xml version="1.0"?>
+<!-- roslaunch urdf_tutorial display.launch model:='$(find custom_robotic_arm)/urdf/robotic_arm.urdf' -->
+<!--roslaunch custom_robotic_arm  arm_gazebo.launch-->
+<!--sudo apt install ros-<melodic-joint-state-publisher-gui-->
+<robot name="robotic_arm">
+    <link name="world"/>
+    <!-- BASE LINK-->    
+    <link name="base_link">
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <mass value="1"/>
+            <inertia ixx="027" ixy="0.0" ixz="0.0" iyy="0.0027" iyz="0.0" izz="0.005"/>
+        </inertial>
+
+        <visual>
+            <origin xyz="0.0 0.0 0.025" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <cylinder radius="0.3" length="0.05"/>
+            </geometry>
+            <material name="Black"/>
+        </visual>
+
+        <collision>
+            <origin xyz="0.0 0.0 0.025" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <cylinder radius="0.3" length="0.05"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="fixed_base" type="fixed">
+        <parent link="world"/>
+        <child link="base_link"/>
+    </joint>
+
+    <!-- LINK 1-->    
+    <link name="One">
+        <inertial>
+            <origin xyz="0.0 0.0 0.25" rpy="0.0 0.0 0.0"/>
+            <mass value="1"/>
+            <inertia ixx="0.02176" ixy="0.0" ixz="0.0" iyy="0.00125" iyz="0.0" izz="0.005"/>
+        </inertial>
+
+        <visual>
+             <origin xyz="0.0 0.0 0.25" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <cylinder radius="0.05" length="0.5"/>
+            </geometry>
+            <material name="Silver">
+                <color rgba="0.75 0.75 0.75 1.0"/>
+            </material>
+        </visual>
+
+        <collision>
+            <origin xyz="0.0 0.0 0.25" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <cylinder radius="0.05" length="0.5"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="One_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="One"/>
+        <axis xyz="0.0 0.0 1"/>
+        <origin xyz="0.0 0.0 0.05" rpy="0.0 0.0 0.0"/>
+    </joint>
+
+ <!-- LINK 2-->    
+    <link name="Two">
+        <inertial>
+            <origin xyz="0.0 0.0 0.25" rpy="0.0 0.0 0.0"/>
+            <mass value="1"/>
+            <inertia ixx="0.01396" ixy="0.0" ixz="0.0" iyy="0.01396" iyz="0.0" izz="0.0015"/>
+        </inertial>
+
+        <visual>
+             <origin xyz="0.0 0.0 0.25" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <cylinder radius="0.05" length="0.5"/>
+            </geometry>
+            <material name="Silver">
+                <color rgba="0.75 0.75 0.75 1.0"/>
+            </material>
+        </visual>
+
+        <collision>
+            <origin xyz="0.0 0.0 0.25" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <cylinder radius="0.05" length="0.5"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="Two_joint" type="continuous">
+        <parent link="One"/>
+        <child link="Two"/>
+        <axis xyz="0.0 0.0 1"/>
+        <origin xyz="0.0 0.0 0.5" rpy="0.0 1.5788 0"/>
+        
+    </joint>
+
+<!-- LINK 3-->    
+    <link name="Three">
+        <inertial>
+            <origin xyz="0.0 0.0 0.25" rpy="0.0 0.0 0.0"/>
+            <mass value="1"/>
+            <inertia ixx="0.01396" ixy="0.0" ixz="0.0" iyy="0.01396" iyz="0.0" izz="0.0015"/>
+        </inertial>
+
+        <visual>
+            <origin xyz="0.0 0.0 0.25" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <cylinder radius="0.05" length="0.3"/>
+            </geometry>
+            <material name="Silver">
+                <color rgba="0.75 0.75 0.75 1.0"/>
+            </material>
+        </visual>
+
+        <collision>
+            <origin xyz="0.0 0.0 0.25" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <cylinder radius="0.05" length="0.3"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="Three_joint" type="continuous">
+        <parent link="Two"/>
+        <child link="Three"/>
+        <axis xyz="0.0 0.0 1"/>
+        <origin xyz="0.0 0.0 0.5" rpy="0.0 -1.5788 0"/>
+        
+    </joint>
+
+<!-- LINK 4-->    
+    <link name="Four">
+        <inertial>
+            <origin xyz="0.0 0.0 0.25" rpy="0.0 0.0 0.0"/>
+            <mass value="1"/>
+            <inertia ixx="0.01396" ixy="0.0" ixz="0.0" iyy="0.01396" iyz="0.0" izz="0.0015"/>
+        </inertial>
+
+        <visual>
+            <origin xyz="0.0 0.0 0.25" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <cylinder radius="0.05" length="0.3"/>
+            </geometry>
+            <material name="Silver">
+                <color rgba="0.75 0.75 0.75 1.0"/>
+            </material>
+        </visual>
+
+        <collision>
+            <origin xyz="0.0 0.0 0.25" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <cylinder radius="0.05" length="0.3"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="Four_joint" type="continuous">
+        <parent link="Three"/>
+        <child link="Four"/>
+        <axis xyz="0.0 0.0 1"/>
+        <origin xyz="0.0 0.0 0.3" rpy="0.0 1.5788 0"/>
+        
+    </joint>
+
+
+<!-- gripper base link-->    
+    <link name="Gripper_Base">
+        <inertial>
+            <origin xyz="0.0 0.0 0.25" rpy="0.0 0.0 0.0"/>
+            <mass value="1"/>
+            <inertia ixx="0.01396" ixy="0.0" ixz="0.0" iyy="0.01396" iyz="0.0" izz="0.00125"/>
+        </inertial>
+
+        <visual>
+             <origin xyz="0.0 0.0 0.25" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <cylinder radius="0.08" length="0.5"/>
+            </geometry>
+            <material name="Silver">
+                <color rgba="0.75 0.75 0.75 1.0"/>
+            </material>
+        </visual>
+
+        <collision>
+            <origin xyz="0.0 0.0 0.25" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <cylinder radius="0.08" length="0.5"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="Gripper_Base_joint" type="continuous">
+        <parent link="Four"/>
+        <child link="Gripper_Base"/>
+        <axis xyz="0.0 0.0 1"/>
+        <origin xyz="0.0 0.0 0.45" rpy="0.0 0 0"/>
+        
+    </joint>
+
+<!-- Left Finger Link-->    
+    <link name="L_F">
+        <inertial>
+            <origin xyz="0.0 0.0 0.04" rpy="0.0 0.0 0.0"/>
+            <mass value="1"/>
+            <inertia ixx="100" ixy="0.0" ixz="0.0" iyy="100" iyz="0.0" izz="0.0015"/>
+        </inertial>
+
+        <visual>
+            <origin xyz="0.0 0.0 0.04" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="0.02 0.02 0.15"/>
+            </geometry>
+            <material name="Red"/>
+        </visual>
+
+        <collision>
+            <origin xyz="0.0 0.0 0.04" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="0.02 0.02 0.15"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="L_F_joint" type="continuous">
+        <parent link="Gripper_Base"/>
+        <child link="L_F"/>
+        <axis xyz="0.0 0.0 1"/>
+        <origin xyz=" 0.0 -0.04 0.04"/>
+        
+    </joint>
+
+<!-- Right Finger Link-->    
+    <link name="R_F">
+        <inertial>
+            <origin xyz="0.0 0.0 0.04" rpy="0.0 0.0 0.0"/>
+            <mass value="1"/>
+            <inertia ixx="100" ixy="0.0" ixz="0.0" iyy="100" iyz="0.0" izz="0.0015"/>
+        </inertial>
+
+        <visual>
+            <origin xyz="0.0 0.0 0.04" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="0.02 0.02 0.15"/>
+            </geometry>
+            <material name="Red"/>
+        </visual>
+
+        <collision>
+            <origin xyz="0.0 0.0 0.04" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="0.02 0.02 0.15"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="R_F_joint" type="continuous">
+        <parent link="Gripper_Base"/>
+        <child link="R_F"/>
+        <axis xyz="0.0 0.0 1"/>
+        <origin xyz=" 0.0 0.04 0.04"/>
+        
+    </joint>
+
+
+    
+</robot>

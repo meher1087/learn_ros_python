@@ -1,0 +1,242 @@
+<?xml version="1.0"?>
+<robot name="robotic_arm" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<!-- roslaunch urdf_tutorial display.launch model:='$(find custom_robotic_arm)/urdf/robotic_arm.urdf' -->
+<!--roslaunch custom_robotic_arm  arm_gazebo.launch-->
+<!--sudo apt install ros-<melodic-joint-state-publisher-gui-->
+    <link name="world"/>
+
+    <joint name="fixed_joint" type="fixed">
+        <parent link="world"/>
+        <child link="base_link"/>
+    </joint>
+
+    <link name="base_link">
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <mass value="1"/>
+            <inertia ixx="027" ixy="0.0" ixz="0.0" iyy="0.0027" iyz="0.0" izz="0.005"/>
+        </inertial>
+        <visual name="Shoulder">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <cylinder radius="0.1" length="0.01"/>
+            </geometry>
+            <material name="Orange">
+                <color rgba="${255/255} ${108/255} ${10/255} 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.000" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <cylinder radius="0.1" length="0.01"/>
+            </geometry>
+        </collision>
+    </link>
+
+
+    <joint name="S_joint_x" type="continuous">
+        <parent link="base_link"/>
+        <child link="link1"/>
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        <axis xyz="0.0 0.0 1.0"/>
+    </joint>
+
+
+    <link name="link1">
+        <inertial>
+            <origin xyz="0.0 0.0 ${0.35/2}" rpy="0.0 0.0 0.0"/>
+            <mass value="1"/>
+            <inertia ixx="0.023" iyy="0.023" izz="0.023" ixy="0.0" ixz="0.0"  iyz="0.0" />
+        </inertial>
+        <visual name="Shoulder">
+            <origin xyz="0.0 0.0 ${0.35/2}" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <cylinder radius="0.01" length="0.35"/>
+            </geometry>
+            <material name="Orange">
+                <color rgba="${255/255} ${108/255} ${10/255} 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 ${0.35/2}" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <cylinder radius="0.1" length="0.01"/>
+            </geometry>
+        </collision>
+    </link>
+    
+
+
+    
+    <joint name="S_joint_y" type="continuous">
+        <parent link="link1"/>
+        <child link="Upper_arm"/>
+        <origin xyz="0.0 0.0 0.35" rpy="0.0 0 0.0"/>
+        <axis xyz="0.0 1.0 0"/>
+    </joint>
+
+
+
+    <link name="Upper_arm">
+        <inertial>
+            <origin xyz="0.0 0.0 ${0.85/2}" rpy="0.0 0 0.0"/>
+            <mass value="1"/>
+            <inertia ixx="0.023" iyy="0.023" izz="0.023" ixy="0.0" ixz="0.0"  iyz="0.0" />
+        </inertial>
+        <visual name="Shoulder">
+            <origin xyz="0.0 0.0 ${0.85/2}" rpy="0.0 0 0.0"/>
+            <geometry>
+                <cylinder radius="0.01" length="0.85"/>
+            </geometry>
+            <material name="Orange">
+                <color rgba="${255/255} ${108/255} ${10/255} 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 ${0.85/2}" rpy="0.0 0 0.0"/>
+            <geometry>
+                <cylinder radius="0.1" length="0.01"/>
+            </geometry>
+        </collision>
+    </link>
+
+
+
+   
+    <joint name="E_joint" type="continuous">
+        <parent link="Upper_arm"/>
+        <child link="Elbow"/>
+        <origin xyz="0 0 0.85" rpy="0 0 0" />
+        <axis xyz="0 1 0" />
+    </joint>
+
+
+
+    <link name="Elbow">
+        <inertial>
+            <origin xyz="0.0 0.0 ${0.8/2}" rpy="0.0 0 0.0"/>
+            <mass value="1"/>
+            <inertia ixx="0.023" iyy="0.023" izz="0.023" ixy="0.0" ixz="0.0"  iyz="0.0" />
+        </inertial>
+        <visual name="Shoulder">
+            <origin xyz="0.0 0.0 ${0.8/2}" rpy="0.0 0 0.0"/>
+            <geometry>
+                <cylinder radius="0.01" length="0.8"/>
+            </geometry>
+            <material name="Orange">
+                <color rgba="${255/255} ${108/255} ${10/255} 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 ${0.8/2}" rpy="0.0 0 0.0"/>
+            <geometry>
+                <cylinder radius="0.1" length="0.01"/>
+            </geometry>
+        </collision>
+    </link>
+
+
+
+
+
+
+    <joint name="W_joint" type="continuous">
+        <parent link="Elbow"/>
+        <child link="Wrist"/>
+        <origin xyz="0 0 0.8" rpy="0 0 0" />
+        <axis xyz="0 0 1" />
+    </joint>
+
+
+    <link name="Wrist">
+        <inertial>
+            <origin xyz="0.0 0.0 ${0.1/2}" rpy="0.0 0 0.0"/>
+            <mass value="1"/>
+            <inertia ixx="0.023" iyy="0.023" izz="0.023" ixy="0.0" ixz="0.0"  iyz="0.0" />
+        </inertial>
+        <visual name="Shoulder">
+            <origin xyz="0.0 0.0 ${0.1/2}" rpy="0.0 0 0.0"/>
+            <geometry>
+               <box size="0.25 0.1 0.1"/>
+            </geometry>
+            <material name="Orange">
+                <color rgba="${255/255} ${108/255} ${10/255} 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 ${0.1/2}" rpy="0.0 0 0.0"/>
+           <geometry>
+               <box size="0.15 0.1 0.1"/>
+            </geometry>
+        </collision>
+    </link>
+
+
+
+    <joint name="Thumb_joint" type="prismatic">
+        <parent link="Wrist"/>
+        <child link="Thumb"/>
+        <origin xyz=".1 0 .1" rpy="0 0 0" />
+        <axis xyz="1 0 0" />
+        <limit lower="0" upper="0.1" effort="1000" velocity="5"/>
+    </joint>
+
+
+
+    <link name="Thumb">
+        <inertial>
+            <origin xyz="0 0 ${0.3/2}" rpy="0.0 0 0.0"/>
+            <mass value="1"/>
+            <inertia ixx="0.023" iyy="0.023" izz="0.023" ixy="0.0" ixz="0.0"  iyz="0.0" />
+        </inertial>
+        <visual name="Shoulder">
+            <origin xyz="0 0 ${0.3/2}" rpy="0.0 0 0.0"/>
+            <geometry>
+               <box size="0.02 0.1 0.3"/>
+            </geometry>
+            <material name="Orange">
+                <color rgba="${255/255} ${108/255} ${10/255} 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 ${0.3/2}" rpy="0.0 0 0.0"/>
+           <geometry>
+               <box size="0.15 0.1 0.1"/>
+            </geometry>
+        </collision>
+    </link>
+
+
+    <joint name="Index_finger_joint" type="prismatic">
+        <parent link="Wrist"/>
+        <child link="Index_finger"/>
+        <origin xyz="-0.05 0 .1" rpy="0 0 0" />
+        <axis xyz="1 0 0" />
+        <limit lower="-0.05" upper="0.1" effort="1000" velocity="5"/>
+    </joint>
+
+
+    <link name="Index_finger">
+        <inertial>
+            <origin xyz="0 0 ${0.3/2}" rpy="0.0 0 0.0"/>
+            <mass value="1"/>
+            <inertia ixx="0.023" iyy="0.023" izz="0.023" ixy="0.0" ixz="0.0"  iyz="0.0" />
+        </inertial>
+        <visual name="Shoulder">
+            <origin xyz="0 0 ${0.3/2}" rpy="0.0 0 0.0"/>
+            <geometry>
+               <box size="0.02 0.1 0.3"/>
+            </geometry>
+            <material name="Orange">
+                <color rgba="${255/255} ${108/255} ${10/255} 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 ${0.3/2}" rpy="0.0 0 0.0"/>
+           <geometry>
+               <box size="0.15 0.1 0.1"/>
+            </geometry>
+        </collision>
+    </link>
+
+</robot>

@@ -7,3 +7,4 @@
 /simulation_ws/build
 /simulation_ws/devel
 /simulation_ws/.catkin_workspace
+/simulation_ws/src/gazebo_ros_demos
