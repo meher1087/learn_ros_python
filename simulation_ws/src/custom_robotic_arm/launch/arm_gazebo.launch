@@ -5,5 +5,9 @@
     <include file="$(find gazebo_ros)/launch/empty_world.launch"/>
     
     <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model robotic_arm"/>
-      <!-- Show in Rviz   -->
+
+    <rosparam file="$(find custom_robotic_arm)/config/controller.yaml"/>
+    <node name="controller_spawner" pkg="controller_manager" type="spawner" args="arm_controller"/>
+
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
 </launch>

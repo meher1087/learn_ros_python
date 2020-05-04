@@ -268,5 +268,34 @@
     </joint>
 
 
+<!--Thumb_joint-->
+<transmission name="Trans_5">
+    <type>transmission_interface/SimpeTransmission</type>
+    <joint name="Thumb_joint">
+        <hardwareInterface>PositionJointInterface</hardwareInterface>        
+    </joint>
+
+    <actuator name="Motor5">
+        <hardwareInterface>PositionJointInterface</hardwareInterface>        
+        <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+
+</transmission>
+
+
+<!--Index_finger_joint-->
+<transmission name="Trans_6">
+    <type>transmission_interface/SimpeTransmission</type>
+    <joint name="Index_finger_joint">
+        <hardwareInterface>PositionJointInterface</hardwareInterface>        
+    </joint>
+
+    <actuator name="Motor6">
+        <hardwareInterface>PositionJointInterface</hardwareInterface>        
+        <mechanicalReduction>1</mechanicalReduction>
+
+    </actuator>
+
+</transmission>
     
 </robot>

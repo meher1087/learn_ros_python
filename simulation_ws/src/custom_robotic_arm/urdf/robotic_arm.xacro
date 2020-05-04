@@ -2,7 +2,6 @@
 <robot name="robotic_arm" xmlns:xacro="http://www.ros.org/wiki/xacro">
 <!-- roslaunch urdf_tutorial display.launch model:='$(find custom_robotic_arm)/urdf/robotic_arm.urdf' -->
 <!--roslaunch custom_robotic_arm  arm_gazebo.launch-->
-<!--sudo apt install ros-<melodic-joint-state-publisher-gui-->
     <link name="world"/>
 
     <joint name="fixed_joint" type="fixed">
@@ -239,4 +238,89 @@
         </collision>
     </link>
 
+
+<!-- TRANSMISSION   -->
+
+<!--Sh_Joint_x-->
+
+<transmission name="Trans_1">
+    <type>transmission_interface/SimpeTransmission</type>
+    <joint name="S_joint_x">
+        <hardwareInterface>PositionJointInterface</hardwareInterface>        
+    </joint>
+
+    <actuator name="Motor1">
+        <hardwareInterface>PositionJointInterface</hardwareInterface>        
+        <mechanicalReduction>1</mechanicalReduction>
+
+    </actuator>
+
+</transmission>
+
+<!--S_joint_y-->
+<transmission name="Trans_2">
+    <type>transmission_interface/SimpeTransmission</type>
+    <joint name="S_joint_y">
+        <hardwareInterface>PositionJointInterface</hardwareInterface>        
+    </joint>
+
+    <actuator name="Motor2">
+        <hardwareInterface>PositionJointInterface</hardwareInterface>        
+        <mechanicalReduction>1</mechanicalReduction>
+
+    </actuator>
+
+</transmission>
+
+
+
+<!--E_joint-->
+<transmission name="Trans_3">
+    <type>transmission_interface/SimpeTransmission</type>
+    <joint name="E_joint">
+        <hardwareInterface>PositionJointInterface</hardwareInterface>        
+    </joint>
+
+    <actuator name="Motor3">
+        <hardwareInterface>PositionJointInterface</hardwareInterface>        
+        <mechanicalReduction>1</mechanicalReduction>
+
+    </actuator>
+
+</transmission>
+
+
+
+<!--W_joint-->
+<transmission name="Trans_4">
+    <type>transmission_interface/SimpeTransmission</type>
+    <joint name="W_joint">
+        <hardwareInterface>PositionJointInterface</hardwareInterface>        
+    </joint>
+
+    <actuator name="Motor4">
+        <hardwareInterface>PositionJointInterface</hardwareInterface>        
+        <mechanicalReduction>1</mechanicalReduction>
+
+    </actuator>
+
+</transmission>
+
+
+<!-- tell gazebo that we have a controller for this urdf file-->
+<gazebo>
+    <plugin name="control" filename="libgazebo_ros_control.so"/>
+</gazebo>
+
+<!--  keep controller.yaml file in config folder in workspace-->
+<!--  In launch file also inform the location of controller file-->
+<!--  we can see the list of topics in which controller topics will be published
+    using rostopic list-->
+
+
+<gazebo>
+    <plugin name="joint_state_publisher" filename="libgazebo_ros_joint_state_publisher.so">
+        <jointName>S_joint_x, S_joint_y, E_joint, W_joint</jointName>
+    </plugin>
+</gazebo>
 </robot>
