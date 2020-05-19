@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: dexter
+    relative_path: src/urdf/arm.urdf
+    xacro_args: ""
+  SRDF:
+    relative_path: config/test_robot.srdf
+  CONFIG:
+    author_name: mady
+    author_email: meher1087@gmail.com
+    generated_timestamp: 1589705331

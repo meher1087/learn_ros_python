@@ -1,0 +1,7 @@
+ros_ws is workspace for textbook basic codes
+
+simulation_ws is made for udemy course while learning arm simulation in gazebo
+
+ws_movit is demo moveit program with panda arm
+
+arm_ws is moveit generated custom arm on which control we are writing cotrol nodes in python.
