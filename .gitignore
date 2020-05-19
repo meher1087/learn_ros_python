@@ -12,3 +12,5 @@
 /arm_ws/devel/
 /arm_ws/src/.vscode
 
+/ws_moveit
+

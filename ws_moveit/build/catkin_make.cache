@@ -1,2 +1,0 @@
-moveit_config:my_arm_xacro:panda_moveit_config
--DCATKIN_DEVEL_PREFIX=/home/mady/MEGA/mady/courses/learn_ros_python/ws_moveit/devel -DCMAKE_INSTALL_PREFIX=/home/mady/MEGA/mady/courses/learn_ros_python/ws_moveit/install -G Unix Makefiles
