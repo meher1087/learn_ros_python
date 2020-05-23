@@ -1,7 +1,7 @@
 {
     "ros.distro": "melodic",
     "python.autoComplete.extraPaths": [
+        "/home/mady/MEGA/mady/courses/learn_ros_python/ros_ws/devel/lib/python2.7/dist-packages",
         "/opt/ros/melodic/lib/python2.7/dist-packages"
-    ],
-    "python.pythonPath": "/usr/bin/python"
+    ]
 }

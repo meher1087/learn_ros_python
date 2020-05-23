@@ -1,0 +1,25 @@
+<!--
+ROS params are really useful to launch your ROS application with 
+different setup settings, without having to re-write and re-compile 
+any part of your code. With the rosparam command line tool, you’ll
+be able to test your programs even faster when developing.
+-->
+
+<launch>
+    <param name="my_integer" type="int" value="7" />
+    <param name="my_float" type="double" value="3.14" />
+    <param name="my_string" type="str" value="hello" />
+</launch>
+
+<!-- These parameters are in global namespace. If we want
+to use parameters within specific namespace then syntax is 
+as follows
+<param name="/name_space/my_integer" type="int" value="7" />
+
+we can read, edit, add or delete params in command line
+rosparam list
+rosparam get /myfloat
+rosparam set /myfloat 0.3
+rosparam delete /my_float
+rosparam set /new_param 20
+-->

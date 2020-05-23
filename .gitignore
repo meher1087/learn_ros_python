@@ -3,6 +3,7 @@
 /ros_ws/build/
 /ros_ws/devel/
 /ros_ws/src/basic/src/.vscode
+/ros_ws/src/audio_common
 
 /simulation_ws/build
 /simulation_ws/devel
