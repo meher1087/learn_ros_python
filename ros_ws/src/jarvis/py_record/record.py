@@ -83,8 +83,8 @@ a = Recorder()
 
 
 def talker():
-    pub = rospy.Publisher('py_speech',String,queue_size=5)
-    rospy.init_node('py_recorder_publisher')
+    pub = rospy.Publisher('take_records',String,queue_size=5)
+    rospy.init_node('py_recording_publisher')
     while not rospy.is_shutdown():
         input = a.stream.read(chunk)
         rms_val = a.rms(input)
