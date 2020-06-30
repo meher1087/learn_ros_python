@@ -1,0 +1,6 @@
+<launch>
+    <node name ="audio_converter" type ="convert.py" pkg="jarvis" output="screen"></node>
+    <node name ="event_finder" type ="event_finder.py" pkg="jarvis" output="screen"></node>
+    <node name ="calendar_monitor" type ="Calendar_monitor.py" pkg="jarvis" output="screen"></node>
+    <rosparam command="load" file="$(find jarvis)/data/parameters.yaml"/>
+</launch>

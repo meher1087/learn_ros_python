@@ -19,7 +19,7 @@ n_days = re.compile('\\d+ days')
 n_months = re.compile('\\d+ months')
 #####
 
-speech2txt = r'/home/mady/MEGA/mady/courses/learn_ros_python/ros_ws/src/jarvis/speech2txt.txt'
+speech2txt = r'/home/mady/MEGA/mady/courses/learn_ros_python/ros_ws/src/jarvis/data/speech2txt.txt'
 my_file = open(speech2txt,"r+")
 found =False
 tommorow = False

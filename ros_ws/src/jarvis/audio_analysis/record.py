@@ -10,7 +10,7 @@ import time
 import os
 
 
-Threshold = 70
+Threshold = 50
 
 SHORT_NORMALIZE = (1.0/32768.0)
 chunk = 1024
@@ -83,15 +83,15 @@ a = Recorder()
 
 
 def talker():
-    pub = rospy.Publisher('take_records',String,queue_size=5)
-    rospy.init_node('py_recording_publisher')
+    pub = rospy.Publisher('Audio_analysis',String,queue_size=5)
+    rospy.init_node('recorder')
     while not rospy.is_shutdown():
         input = a.stream.read(chunk)
         rms_val = a.rms(input)
         if rms_val > Threshold:
             a.record()
             name = len(os.listdir(f_name_directory))
-            pub.publish(str(name-1))
+            pub.publish('Audio_recorded '+str(name-1))
 
 if __name__ == '__main__':
     try:
