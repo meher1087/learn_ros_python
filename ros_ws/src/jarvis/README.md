@@ -15,3 +15,5 @@ Planning To:
 7. Let text to speech be another action which can be called with goal of text to be spoken which could be called by any other action.
 
 TODO: Ambient noise calibration in record node need to be included
+
+Current status can be seen in RQT graph in the repository
