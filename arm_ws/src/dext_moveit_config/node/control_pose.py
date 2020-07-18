@@ -22,7 +22,7 @@ robot = moveit_commander.RobotCommander()
 scene=moveit_commander.PlanningSceneInterface()
 
 #instantiate MoveGroupCommander for one of the planning groups of robot
-group_name = "arm"
+group_name = "manipulator"#"arm"
 group = moveit_commander.MoveGroupCommander(group_name)
 
 # # set plannner
@@ -108,7 +108,7 @@ print(pos_Conj_grad)
 # apply on robot again
 #use go command to execute the joint angles
 # get robot to initial position
-group.go([pi/4,pi/4,pi/4,pi/4],wait=True)
+group.go([pi/2,pi/4,pi/4,pi/2],wait=True)
 group.stop()
 
 group.go(pos_Conj_grad,wait=True)

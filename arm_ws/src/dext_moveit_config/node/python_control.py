@@ -22,7 +22,7 @@ robot = moveit_commander.RobotCommander()
 scene=moveit_commander.PlanningSceneInterface()
 
 #instantiate MoveGroupCommander for one of the planning groups of robot
-group_name = "arm"
+group_name = "manipulator" #arm
 group = moveit_commander.MoveGroupCommander(group_name)
 
 #create a display trajectory publisher which is used later to publish trajectories for rvis to visulalize
@@ -48,8 +48,8 @@ display_trajectory_publisher=rospy.Publisher('/move_group/display_planned_path',
 
 # move robot to non singular position by adjusting joint vlaues in group
 joint_goal = group.get_current_joint_values()
-joint_goal[0] = 0
-joint_goal[1] = -pi/4
+joint_goal[0] = -pi/2
+joint_goal[1] = pi/4
 joint_goal[2] = 0
 joint_goal[3] = pi/4
 
