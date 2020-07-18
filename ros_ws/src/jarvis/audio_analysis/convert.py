@@ -23,7 +23,7 @@ def callback(status):
     if 'Audio_recorded' in message:
         file_name = message.split()[1]
         wav = file_name + ".wav"
-        print(wav)
+        #print(wav)
         wavename = os.path.join(audio_directory, wav)     
         record = sr.AudioFile(wavename) 
         # Exception handling to handle 
@@ -36,11 +36,12 @@ def callback(status):
                 print("converting..")
                 MyText = r.recognize_google(audio) 
                 file1 = open(text_file,'a')
+                print(MyText)
                 #file1.writelines(MyText)
                 file1.write(MyText + " \n")
                 file1.close()
                 file1 = open(text_file,"r+")
-                print(file1.read())
+                #print(file1.read())
                 file1.close()
                 # Move file to archives
                 #shutil.move(wavename,archive_dir)  
@@ -51,7 +52,7 @@ def callback(status):
         except sr.UnknownValueError: 
             print("unknown error occured")
     else:
-        print('some other message') 
+        print('unknown_error_') 
 
 rospy.init_node('audio_converter')
 

@@ -130,7 +130,7 @@ def find_date(last_line,tomorrow):
         for word in words:
             if word in dayTonum:    
                 day = dayTonum[word]
-                print(day)
+                #print(day)
                 last_line = last_line.replace(word,'')
                 dt = datetime.datetime.today()
                 date = dt.strftime("%d %m %Y")
@@ -167,9 +167,13 @@ def find_date(last_line,tomorrow):
     return int(year),int(month), int(day),last_line
 
 def cleanup(msg):
-    msg = msg.replace('by','')
-    msg = msg.replace('s','')
-    msg = msg.replace('jarvis','')
+    msg = msg.replace(' by ','')
+    msg = msg.replace(' s ','')
+    msg = msg.replace(' jarvis ','')
+    msg = msg.replace(' in ','')
+    msg = msg.replace(' me ',' you ')
+    msg = msg.replace(' i ',' you ')
+    msg = msg.replace(' on ','')
     return msg
 
 ### regex objects
@@ -211,8 +215,8 @@ def callback(arg):
         speech2txt.close()
         last_line= last_line.lower()
         # open file and search for time, date and create event and write to calander
-        print(last_line)
-        print("")
+        #print(last_line)
+        #print("")
         #pdb.set_trace()
         if 'remind' in last_line:
             tomorrow = False
@@ -222,6 +226,8 @@ def callback(arg):
             details = [year,month,date,hours,mins]
             event = "".join(map(str,details))
             event = event+'-->'+last_line
+            event = cleanup(event)
+            print("event detected ", event)
             f = r'/home/mady/MEGA/mady/courses/learn_ros_python/ros_ws/src/jarvis/data/calander.txt'
             written = False
             attempt = 0
@@ -239,7 +245,7 @@ def callback(arg):
                         print('calender file is not available')
                     pass
         else:
-            print('some_other_message')
+            print('Event_finder detected no events')
     return
 
 rospy.init_node('event_finder')

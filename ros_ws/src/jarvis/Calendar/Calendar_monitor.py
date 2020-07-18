@@ -70,10 +70,10 @@ while not rospy.is_shutdown():
         # arrange event data:    # calendar file will have text in format year-month-date-hours-mins-->message-->repeat-with text(daily, weekly, monthly, yearly, hourly -number)    
             line +=1
             details = event.split('-->')
-            if len(details)==2:    
+            if len(details)==2:
                 date_n_time = details[0]
                 message = details[1]
-                message = cleanup(message)
+                #message = cleanup(message)
                     
                 #repeat = details[2]
                 cal_dict.update({date_n_time:[line,message]})  # todo: if same date and time found append the key value dont update
